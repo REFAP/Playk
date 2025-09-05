@@ -477,6 +477,7 @@
       color:var(--accent);
       text-transform:uppercase;
       letter-spacing:1px;
+      z-index:2;
     }
     
     .gallery-item.empty{
@@ -484,7 +485,7 @@
       background:transparent;
     }
     
-    .gallery-item.empty span{
+    .gallery-item.empty span:not(.gallery-number){
       color:var(--gris);
       font-weight:600;
       text-transform:uppercase;
@@ -768,11 +769,11 @@
         <div class="gallery">
           <div class="gallery-item">
             <span class="gallery-number">#01</span>
-            <img src="https://raw.githubusercontent.com/REFAP/projet_playk/landing-page/playk01.jpg" alt="PlayK #01" onerror="this.parentElement.classList.add('empty');this.innerHTML='<span class=\'gallery-number\'>#01</span><span>À venir</span>';">
+            <img src="https://i.ibb.co/hxN86szv/playk01-jpg.jpg" alt="PlayK #01">
           </div>
           <div class="gallery-item">
             <span class="gallery-number">#02</span>
-            <img src="https://raw.githubusercontent.com/REFAP/projet_playk/landing-page/playk02.jpg" alt="PlayK #02" onerror="this.parentElement.classList.add('empty');this.innerHTML='<span class=\'gallery-number\'>#02</span><span>À venir</span>';">
+            <img src="https://i.ibb.co/gMncvgJc/playk02-jpg.jpg" alt="PlayK #02">
           </div>
           <div class="gallery-item empty">
             <span class="gallery-number">#03</span>
