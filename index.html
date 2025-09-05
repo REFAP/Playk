@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PlayK — Not a Toy | Manifeste & Lancement</title>
+  <meta name="description" content="PlayK — Not a Toy. Un manifeste artistique. Une figure d'enfance réinventée en art contemporain."/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@700&display=swap');
+    
+    :root{
+      --noir:#0a0a0a;
+      --blanc:#ffffff;
+      --crème:#faf8f3;
+      --accent:#ff4747;
+      --gold:#d4af37;
+      --gris:#8a8a8a;
+      --gris-light:#e5e5e5;
+      --shadow-xl:0 25px 50px -12px rgba(0,0,0,.25);
+      --shadow-soft:0 10px 40px rgba(0,0,0,.08);
+    }
+    
+    *{margin:0;padding:0;box-sizing:border-box}
+    
+    body{
+      background:var(--noir);
+      color:var(--blanc);
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      overflow-x:hidden;
+      cursor:default;
+    }
+    
+    ::selection{background:var(--accent);color:var(--blanc)}
+    
+    a{
+      color:inherit;
+      text-decoration:none;
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+      cursor:pointer;
+    }
+    
+    /* Navigation */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(10,10,10,.85);
+      backdrop-filter:saturate(180%) blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      z-index:100;
+      animation:slideDown .6s cubic-bezier(.4,0,.2,1);
+    }
+    
+    @keyframes slideDown{
+      from{transform:translateY(-100%);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+    
+    .nav{
+      max-width:1400px;
+      margin:0 auto;
+      padding:20px 40px;
+      display:flex;
+      align-items:center;
+      gap:40px;
+    }
+    
+    .brand{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;
+      font-size:22px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      letter-spacing:-0.5px;
+    }
+    
+    .brand-dot{
+      width:12px;
+      height:12px;
+      background:var(--accent);
+      border-radius:50%;
+      animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite;
+    }
+    
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.6;transform:scale(1.2)}
+    }
+    
+    .nav-links{
+      margin-left:auto;
+      display:flex;
+      gap:32px;
+    }
+    
+    .nav-links a{
+      font-weight:500;
+      font-size:14px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      opacity:.7;
+      position:relative;
+    }
+    
+    .nav-links a:hover{opacity:1}
+    
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      bottom:-4px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width .3s cubic-bezier(.4,0,.2,1);
+    }
+    
+    .nav-links a:hover::after{width:100%}
+    
+    /* Main Content */
+    main{
+      margin-top:80px;
+      position:relative;
+    }
+    
+    .container{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 40px;
+    }
+    
+    /* Hero Section */
+    .hero{
+      min-height:90vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:120px 0;
+      position:relative;
+      overflow:hidden;
+    }
+    
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:-50%;
+      width:200%;
+      height:100%;
+      background:radial-gradient(ellipse at center,rgba(255,71,71,.1) 0%,transparent 70%);
+      animation:glow 8s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow{
+      0%{transform:translateX(-10%)}
+      100%{transform:translateX(10%)}
+    }
+    
+    h1{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(48px,8vw,120px);
+      font-weight:700;
+      line-height:1;
+      letter-spacing:-2px;
+      margin-bottom:32px;
+      animation:fadeInUp .8s cubic-bezier(.4,0,.2,1);
+    }
+    
+    @keyframes fadeInUp{
+      from{transform:translateY(40px);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+    
+    .hero-subtitle{
+      font-size:clamp(20px,2.5vw,28px);
+      font-weight:300;
+      color:var(--gris);
+      max-width:800px;
+      margin-bottom:48px;
+      animation:fadeInUp .8s .2s cubic-bezier(.4,0,.2,1) both;
+    }
+    
+    .hero-subtitle b{
+      color:var(--blanc);
+      font-weight:600;
+    }
+    
+    /* Status Card */
+    .status-card{
+      background:linear-gradient(135deg,rgba(255,71,71,.05),rgba(255,71,71,.02));
+      border:1px solid rgba(255,71,71,.2);
+      border-radius:24px;
+      padding:32px;
+      margin-top:32px;
+      max-width:800px;
+      backdrop-filter:blur(10px);
+      animation:fadeInUp .8s .4s cubic-bezier(.4,0,.2,1) both;
+      position:relative;
+      overflow:hidden;
+    }
+    
+    .status-card::before{
+      content:'';
+      position:absolute;
+      top:-2px;
+      left:-2px;
+      right:-2px;
+      bottom:-2px;
+      background:linear-gradient(45deg,var(--accent),var(--gold),var(--accent));
+      border-radius:24px;
+      opacity:0;
+      z-index:-1;
+      transition:opacity .4s;
+    }
+    
+    .status-card:hover::before{
+      opacity:.3;
+      animation:borderRotate 3s linear infinite;
+    }
+    
+    @keyframes borderRotate{
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+    
+    .status-title{
+      font-weight:700;
+      font-size:18px;
+      margin-bottom:12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    
+    .status-badge{
+      background:var(--accent);
+      color:var(--blanc);
+      padding:4px 12px;
+      border-radius:100px;
+      font-size:11px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    
+    /* Sections */
+    section{
+      padding:120px 0;
+      position:relative;
+    }
+    
+    section:nth-child(even){
+      background:linear-gradient(180deg,transparent,rgba(255,255,255,.02),transparent);
+    }
+    
+    h2{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(36px,5vw,72px);
+      font-weight:700;
+      margin-bottom:48px;
+      letter-spacing:-1px;
+      position:relative;
+      display:inline-block;
+    }
+    
+    h2::after{
+      content:'';
+      position:absolute;
+      bottom:-8px;
+      left:0;
+      width:60px;
+      height:4px;
+      background:var(--accent);
+      border-radius:2px;
+    }
+    
+    /* Grid Layouts */
+    .grid{
+      display:grid;
+      gap:32px;
+    }
+    
+    .cols-2{grid-template-columns:repeat(auto-fit,minmax(400px,1fr))}
+    .cols-3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+    
+    /* Cards */
+    .card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:40px;
+      transition:all .4s cubic-bezier(.4,0,.2,1);
+      position:relative;
+      overflow:hidden;
+    }
+    
+    .card::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:linear-gradient(90deg,var(--accent),var(--gold));
+      transform:scaleX(0);
+      transition:transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,71,71,.3);
+      box-shadow:var(--shadow-xl);
+    }
+    
+    .card:hover::before{
+      transform:scaleX(1);
+    }
+    
+    .card h3{
+      font-size:24px;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+    
+    .card p{
+      color:var(--gris);
+      line-height:1.8;
+    }
+    
+    .card b{
+      color:var(--blanc);
+      font-weight:600;
+    }
+    
+    /* Tasks */
+    .task{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,.05);
+      transition:all .3s;
+    }
+    
+    .task:last-child{border-bottom:none}
+    
+    .task:hover{
+      padding-left:8px;
+      border-left:2px solid var(--accent);
+    }
+    
+    .task input[type="checkbox"]{
+      appearance:none;
+      width:24px;
+      height:24px;
+      border:2px solid rgba(255,255,255,.2);
+      border-radius:6px;
+      cursor:pointer;
+      transition:all .3s;
+      position:relative;
+      flex-shrink:0;
+      margin-top:2px;
+    }
+    
+    .task input[type="checkbox"]:hover{
+      border-color:var(--accent);
+      transform:scale(1.1);
+    }
+    
+    .task input[type="checkbox"]:checked{
+      background:var(--accent);
+      border-color:var(--accent);
+    }
+    
+    .task input[type="checkbox"]:checked::after{
+      content:'✓';
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      color:var(--blanc);
+      font-size:14px;
+      font-weight:bold;
+    }
+    
+    .task-label{
+      flex:1;
+      cursor:pointer;
+      user-select:none;
+    }
+    
+    .task input[type="checkbox"]:checked + .task-label{
+      opacity:.5;
+      text-decoration:line-through;
+    }
+    
+    /* Timeline */
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:24px;
+    }
+    
+    .timeline-item{
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:32px;
+      position:relative;
+      transition:all .3s;
+    }
+    
+    .timeline-item:hover{
+      background:rgba(255,255,255,.04);
+      transform:translateY(-4px);
+    }
+    
+    .timeline-month{
+      font-weight:700;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      color:var(--accent);
+      margin-bottom:24px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    .timeline-month::before{
+      content:'';
+      width:8px;
+      height:8px;
+      background:var(--accent);
+      border-radius:50%;
+    }
+    
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+      gap:24px;
+      margin-top:48px;
+    }
+    
+    .gallery-item{
+      aspect-ratio:1;
+      background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:2px solid rgba(255,255,255,.1);
+      border-radius:20px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      transition:all .4s cubic-bezier(.4,0,.2,1);
+      cursor:pointer;
+    }
+    
+    .gallery-item:hover{
+      transform:scale(1.05) rotate(2deg);
+      border-color:var(--accent);
+      box-shadow:0 20px 40px rgba(255,71,71,.2);
+    }
+    
+    .gallery-number{
+      position:absolute;
+      top:16px;
+      left:16px;
+      font-weight:900;
+      font-size:14px;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    
+    .gallery-item.empty{
+      border-style:dashed;
+      background:transparent;
+    }
+    
+    .gallery-item.empty span{
+      color:var(--gris);
+      font-weight:600;
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:1px;
+    }
+    
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:18px;
+    }
+    
+    /* Footer */
+    footer{
+      padding:80px 0 40px;
+      background:linear-gradient(180deg,transparent,rgba(255,255,255,.02));
+      border-top:1px solid rgba(255,255,255,.05);
+    }
+    
+    .footer-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:32px;
+    }
+    
+    .footer-brand{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+    
+    .footer-links{
+      display:flex;
+      gap:24px;
+    }
+    
+    .footer-links a{
+      color:var(--gris);
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    
+    .footer-links a:hover{
+      color:var(--blanc);
+    }
+    
+    /* Animations on Scroll */
+    .fade-in{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all .8s cubic-bezier(.4,0,.2,1);
+    }
+    
+    .fade-in.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    
+    /* Mobile Responsive */
+    @media(max-width:768px){
+      .nav{padding:16px 20px}
+      .nav-links{display:none}
+      .container{padding:0 20px}
+      h1{font-size:48px}
+      .cols-2,.cols-3{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      section{padding:80px 0}
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar{width:10px}
+    ::-webkit-scrollbar-track{background:var(--noir)}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:5px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>PlayK</span>
+      </div>
+      <div class="nav-links">
+        <a href="#manifeste">Manifeste</a>
+        <a href="#organisation">Organisation</a>
+        <a href="#planning">Planning</a>
+        <a href="#collection">Collection</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>PlayK n'est pas<br>un jouet.</h1>
+        <p class="hero-subtitle">
+          Une figure d'enfance réinventée en <b>art contemporain</b>. 
+          Libre, anticonformiste, sincère. Notre pièce collective 
+          <b>PlayK × La Bergerie</b> marquera l'ouverture de la saison.
+        </p>
+        <div class="status-card">
+          <div class="status-title">
+            Projet Collectif
+            <span class="status-badge">En cours</span>
+          </div>
+          <p>Commande <b>Playmobil XXL</b> passée le <b>05/09/2025</b>. 
+          Installation prévue début décembre à La Bergerie. 
+          Deadline finale : <b>15 novembre 2025</b>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTE -->
+    <section id="manifeste">
+      <div class="container">
+        <h2>Manifeste</h2>
+        <div class="grid cols-2">
+          <div class="card fade-in">
+            <h3>NOT A TOY</h3>
+            <p>
+              PlayK est notre rappel brutal et joyeux : <b>on peut encore rêver d'un monde plus juste</b>. 
+              "Not a Toy" affirme notre lien au monde adulte, tout en revendiquant les valeurs de l'enfance : 
+              imagination, courage, transparence.
+            </p>
+            <p style="margin-top:24px">
+              À La Bergerie, PlayK devient sculpture — <b>une présence</b> qui interroge et rassemble. 
+              Un phénomène en route.
+            </p>
+          </div>
+          <div class="card fade-in">
+            <h3>Œuvre Collective</h3>
+            <div class="task">
+              <input type="checkbox" id="t1">
+              <label for="t1" class="task-label">Commande Playmobil XXL — <b>05/09/2025</b></label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t2">
+              <label for="t2" class="task-label">Réception & brainstorming créatif</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t3">
+              <label for="t3" class="task-label">Fabrication & finitions (63 cm)</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t4">
+              <label for="t4" class="task-label">Plaque / QR + authentification</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="t5">
+              <label for="t5" class="task-label">Installation à La Bergerie</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORGANISATION -->
+    <section id="organisation">
+      <div class="container">
+        <h2>Organisation</h2>
+        <div class="grid cols-3">
+          <div class="card fade-in">
+            <h3>🎯 Objectif</h3>
+            <p>Installation <b>début décembre</b> à La Bergerie. 
+            Tout doit être prêt au <b>15 novembre</b> : œuvre collective, 
+            médias, page web, et logistique complète.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>👥 Équipe</h3>
+            <p>• Direction artistique<br>
+            • Photo / Vidéo créative<br>
+            • Réseaux sociaux<br>
+            • Site & partenariats<br>
+            • Production & finitions</p>
+          </div>
+          <div class="card fade-in">
+            <h3>📦 Livrables</h3>
+            <p>• Œuvre collective XXL<br>
+            • 5 PlayK individuels<br>
+            • Landing page + QR<br>
+            • 3 teasers vidéo<br>
+            • Manifeste 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANNING -->
+    <section id="planning">
+      <div class="container">
+        <h2>Rétro-Planning</h2>
+        <div class="timeline">
+          <div class="timeline-item fade-in">
+            <div class="timeline-month">Septembre</div>
+            <div class="task">
+              <input type="checkbox" id="p1">
+              <label for="p1" class="task-label">PlayK #1 — Camille</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p2">
+              <label for="p2" class="task-label">PlayK #1 — Elena</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p3">
+              <label for="p3" class="task-label">PlayK #1 — William</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p4">
+              <label for="p4" class="task-label"><b>Démarrage XXL</b></label>
+            </div>
+          </div>
+          
+          <div class="timeline-item fade-in">
+            <div class="timeline-month">Octobre</div>
+            <div class="task">
+              <input type="checkbox" id="p5">
+              <label for="p5" class="task-label">Logo PlayK final</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p6">
+              <label for="p6" class="task-label">Manifeste rédigé</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p7">
+              <label for="p7" class="task-label"><b>Landing page</b></label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p8">
+              <label for="p8" class="task-label"><b>Réseaux sociaux</b></label>
+            </div>
+          </div>
+          
+          <div class="timeline-item fade-in">
+            <div class="timeline-month">Novembre</div>
+            <div class="task">
+              <input type="checkbox" id="p9">
+              <label for="p9" class="task-label">PlayK La Bergerie fini</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p10">
+              <label for="p10" class="task-label">Plaque & QR codes</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p11">
+              <label for="p11" class="task-label"><b>Plan de lancement</b></label>
+            </div>
+          </div>
+          
+          <div class="timeline-item fade-in">
+            <div class="timeline-month">Décembre</div>
+            <div class="task">
+              <input type="checkbox" id="p12">
+              <label for="p12" class="task-label"><b>Installation finale</b></label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p13">
+              <label for="p13" class="task-label">Campagne sociale</label>
+            </div>
+            <div class="task">
+              <input type="checkbox" id="p14">
+              <label for="p14" class="task-label">Publication manifeste</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section id="collection">
+      <div class="container">
+        <h2>Collection</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <span class="gallery-number">#01</span>
+            <img src="https://raw.githubusercontent.com/REFAP/projet_playk/landing-page/playk01.jpg" alt="PlayK #01" onerror="this.parentElement.classList.add('empty');this.innerHTML='<span class=\'gallery-number\'>#01</span><span>À venir</span>';">
+          </div>
+          <div class="gallery-item">
+            <span class="gallery-number">#02</span>
+            <img src="https://raw.githubusercontent.com/REFAP/projet_playk/landing-page/playk02.jpg" alt="PlayK #02" onerror="this.parentElement.classList.add('empty');this.innerHTML='<span class=\'gallery-number\'>#02</span><span>À venir</span>';">
+          </div>
+          <div class="gallery-item empty">
+            <span class="gallery-number">#03</span>
+            <span>À venir</span>
+          </div>
+          <div class="gallery-item empty">
+            <span class="gallery-number">#04</span>
+            <span>À venir</span>
+          </div>
+          <div class="gallery-item empty">
+            <span class="gallery-number">#05</span>
+            <span>À venir</span>
+          </div>
+          <div class="gallery-item empty">
+            <span class="gallery-number">#06</span>
+            <span>À venir</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">PlayK — Not a Toy</div>
+        <div class="footer-links">
+          <a href="#manifeste">Manifeste</a>
+          <a href="#collection">Collection</a>
+          <a href="mailto:hello@playk.art">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Persistance des checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      const key = 'playk_' + cb.id;
+      const saved = localStorage.getItem(key);
+      if(saved === 'true') cb.checked = true;
+      
+      cb.addEventListener('change', () => {
+        localStorage.setItem(key, cb.checked);
+      });
+    });
+    
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Parallax effect on hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if(hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+  </script>
+</body>
+</html>
